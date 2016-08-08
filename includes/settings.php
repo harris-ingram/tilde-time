@@ -11,13 +11,13 @@ defined('TILDE_TIME') or die;
 
 class TSettings
 {
-  public $offline = 0;
-  public $sitename = 'Tilde Time Management System';
-  public $host = 'localhost';
-  public $user = 'tilde_time';
-  public $password = 'xxxxxx';
-  public $db = 'tilde_time';
-  public $dbtype = 'mysqli';
+  	public $offline = 0;
+	public $sitename = 'Tilde Time Management System';
+  	public $host = 'localhost';
+  	public $user = 'tilde_time';
+  	public $password = 'xxxxxx';
+  	public $db = 'tilde_time';
+  	public $dbtype = 'mysqli';
 	public $uri = 'http://118.138.245.134/git/full/';
 	public $template_path = 'http://118.138.245.134/git/full/template/';
 	public $images = 'http://118.138.245.134/git/full/images/';
