@@ -18,6 +18,7 @@ class TSettings
   	public $password = 'xxxxxx';
   	public $db = 'tilde_time';
   	public $dbtype = 'mysqli';
+  	public $dbprefix = 'til4_';
 	public $uri = 'http://118.138.245.134/git/full/';
 	public $template_path = 'http://118.138.245.134/git/full/template/';
 	public $images = 'http://118.138.245.134/git/full/images/';
