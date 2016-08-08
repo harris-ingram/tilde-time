@@ -12,20 +12,17 @@ defined('TILDE_TIME') or die;
 class TildeApplicationSite
 {
 	private $className = 'site';
-    private static $instance;
+	private static $instance;
 	private $tables;
 	private $html_title;
 	private $settings;	
 	public static function getInstance()
-    {
+	{
         if (null === static::$instance) {
-            static::$instance = new static();			
+           	static::$instance = new static();			
         }
-        
         return static::$instance;
     }
-
-
     private function __construct()
     {
 		$this->settings = new TSettings();
@@ -34,13 +31,10 @@ class TildeApplicationSite
     private function __clone()
     {
     }
-
- 
     private function __wakeup()
     {
     }
 	public function execute(){
-		
 		$document = TildeDocument::getInstance();
 		$document->buildDocument();
 		if(isset($_GET['action'])){
