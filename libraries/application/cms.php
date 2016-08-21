@@ -12,13 +12,13 @@ defined('TILDE_TIME') or die;
 class TildeApplicationCms
 {
 	private $className = 'cms';
-    private static $instances = array();
+	private static $instances = array();
 	private $tables;
 	private $html_title;
 	private $settings;	
 	public static function getInstance($name = null)
-    {
-       if (empty(static::$instances[$name]))
+	{
+	if (empty(static::$instances[$name]))
 		{
 			if(file_exists(TILDE_PATH_LIBRARIES.'/application/' . strtolower($name) . '.php')){
 				require_once TILDE_PATH_LIBRARIES.'/application/' . strtolower($name) . '.php';
@@ -33,7 +33,7 @@ class TildeApplicationCms
 		}
 
 		return static::$instances[$name];
-    }
+	}
 
 
     private function __construct()
