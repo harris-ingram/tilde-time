@@ -1,0 +1,64 @@
+﻿#day_container {
+	margin-left: 20%;
+	margin-right: 20%;
+	box-shadow: #005696 4px 4px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+#day_header, #day_table {
+	border-color: #007cc3;
+}
+
+#day_header {
+	text-align: center;
+	background-color:#007cc3;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+#day_header .col-md-10 a {
+	color: #fff;
+}
+
+#day_header > .col-md-1 {
+	padding-top: 10px;
+	color: #fff;
+}
+
+#day_table {
+	border-top: hidden;
+	height: 700px;
+	overflow-y: scroll;
+}
+
+#time_container {
+	font-size: 20px;
+	border-right: 1px solid #007cc3;
+}
+
+#calendar_drawarea {
+	position: absolute;
+	left: 7%;
+	height: 100%;
+	width: 93%;
+	padding-right: 7%;
+	border-left: 1px dashed #007cc3
+}
+
+#time_whole_item, #time_half_item {
+	padding: 0;
+	width: 7%;
+}
+
+#time_half {
+	font-size: 10px;
+	padding-top: 5px;
+	border-top: 1px dotted #007cc3;
+	border-bottom: 1px solid #007cc3;
+}
+
+#time_whole, #time_half {
+	height: 28.5px;
+	text-align: center;
+}

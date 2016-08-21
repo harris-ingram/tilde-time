@@ -20,6 +20,7 @@ abstract class TildeFactory{
 	public static $message = null;
 	public static $database = null;
 	public static $form = null;
+	public static $calendar = null;
 	public static $mailer = null;
 	
 	public static function getApplication($id = null){
@@ -97,6 +98,14 @@ abstract class TildeFactory{
 			self::$form = TildeForm::getInstance();
 		}
 		return self::$form;
+	}
+	public static function getCalendar(){
+		if (!self::$calendar)
+		{
+			require_once TILDE_PATH_LIBRARIES.'/calendar/calendar.php';
+			self::$calendar = TildeCalendar::getInstance();
+		}
+		return self::$calendar;
 	}
 	public static function getDBObject(){
 		if (!self::$database)

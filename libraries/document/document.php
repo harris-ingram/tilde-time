@@ -61,8 +61,7 @@ class TildeDocument
 	private $cssFiles = array();
 	private $cssInline = array();
 	public function setCSSFiles($relPath){
-		if(!in_array($relPath, $this->cssFiles))
-			$this->cssFiles[] = $relPath;
+		$this->cssFiles[$relPath] = $relPath;
 		
 	}
 	public function setCSSInline($source){
@@ -97,9 +96,7 @@ class TildeDocument
 	private $jsFiles = array();
 	private $jsInline = array();
 	public function setJSFiles($relPath){
-		
-		if(!in_array($relPath, $this->jsFiles))
-			$this->jsFiles[] = $relPath;
+		$this->jsFiles[$relPath] = $relPath;
 	}
 	public function setJSInline($source){
 		if(!in_array($source, $this->jsInline))
