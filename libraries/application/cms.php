@@ -20,7 +20,7 @@ class TildeApplicationCms
     {
        if (empty(static::$instances[$name]))
 		{
-			if(file_exists(TILDE_PATH_LIBRARIES.'/application/' . strtolower($name) . '.php';)){
+			if(file_exists(TILDE_PATH_LIBRARIES.'/application/' . strtolower($name) . '.php')){
 				require_once TILDE_PATH_LIBRARIES.'/application/' . strtolower($name) . '.php';
 				$classname = 'TildeApplication' . ucfirst($name);
 			}
