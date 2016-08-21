@@ -29,7 +29,7 @@ class TildeApplicationCms
 				throw new RuntimeException('Requested Application Can Not Be Found', 500);
 			}
 
-			static::$instances[$name] = new $classname;
+			static::$instances[$name] = $classname::getInstance();
 		}
 
 		return static::$instances[$name];
