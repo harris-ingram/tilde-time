@@ -16,6 +16,7 @@ define('TILDE_TIME', 1);
 define('TILDE_PATH_BASE', __DIR__);
 
 require_once TILDE_PATH_BASE . '/includes/defines.php';
+require_once TILDE_PATH_LIBRARIES . '/factory.php';
 
 $application = TildeFactory::getApplication('site');
 
