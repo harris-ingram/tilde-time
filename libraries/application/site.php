@@ -25,7 +25,7 @@ class TildeApplicationSite
     }
     private function __construct()
     {
-		$this->settings = new TSettings();
+		$this->settings = TildeFactory::getSettings();
 		$this->html_title = $this->settings->sitename;
     }
     private function __clone()
