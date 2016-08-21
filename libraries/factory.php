@@ -32,6 +32,7 @@ abstract class TildeFactory{
 	public static function getSettings(){
 		if (!self::$setting)
 		{
+			require_once TILDE_PATH_BASE.'/settings.php';
 			self::$setting = new TSettings;
 		}
 		return self::$setting;
