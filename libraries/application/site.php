@@ -35,7 +35,7 @@ class TildeApplicationSite
     {
     }
 	public function execute(){
-		$document = TildeDocument::getInstance();
+		$document = TildeFactory::getDocument();
 		$document->buildDocument();
 		if(isset($_GET['action'])){
 			if($_GET['action']=='logout') TildeSession::getInstance()->resetSession();
