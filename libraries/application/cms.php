@@ -20,8 +20,10 @@ class TildeApplicationCms
     {
        if (empty(static::$instances[$name]))
 		{
-			$classname = 'TildeApplication' . ucfirst($name);
-
+			if(file_exists(TILDE_PATH_LIBRARIES.'/application/' . strtolower($name) . '.php';)){
+				require_once TILDE_PATH_LIBRARIES.'/application/' . strtolower($name) . '.php';
+				$classname = 'TildeApplication' . ucfirst($name);
+			}
 			if (!class_exists($classname))
 			{
 				throw new RuntimeException('Requested Application Can Not Be Found', 500);
