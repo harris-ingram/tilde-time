@@ -24,6 +24,7 @@ abstract class TildeFactory{
 			{
 				throw new Exception('Application Instantiation Error', 500);
 			}
+			require_once TILDE_PATH_LIBRARIES.'/application/cms.php';
 			self::$application = TildeApplicationCms::getInstance($id);
 		}
 		return self::$application;
