@@ -1,0 +1,27 @@
+
+.navbar-spacer.clearfix {
+  height: 65px;
+}
+img{
+	max-width:100%;
+}
+
+.navbar-brand img {
+  width: 53px;
+}
+.navbar-brand {
+  padding-top: 4px;
+}
+
+.panel.message-panel {
+    border-bottom: medium none;
+    border-radius: 0;
+    margin: 0;
+}
+.panel.message-panel > * {
+    border-radius: 0;
+    padding: 3px;
+}
+.row:last-child > .panel.message-panel {
+    border: 1px solid;
+}
