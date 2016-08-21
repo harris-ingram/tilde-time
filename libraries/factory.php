@@ -13,8 +13,13 @@ abstract class TildeFactory{
 	public static $application = null;
 	public static $setting = null;
 	public static $session = null;
+	public static $group = null;
+	public static $category = null;
 	public static $document = null;
+	public static $user = null;
+	public static $message = null;
 	public static $database = null;
+	public static $form = null;
 	public static $mailer = null;
 	
 	public static function getApplication($id = null){
@@ -37,7 +42,71 @@ abstract class TildeFactory{
 		}
 		return self::$setting;
 	}
+	public static function getSession(){
+		if (!self::$session)
+		{
+			require_once TILDE_PATH_LIBRARIES.'/system/session.php';
+			self::$session = TildeSession::getInstance();
+		}
+		return self::$session;
+	}
+	public static function getMessage(){
+		if (!self::$message)
+		{
+			require_once TILDE_PATH_LIBRARIES.'/message/message.php';
+			self::$message = TildeMessage::getInstance();
+		}
+		return self::$message;
+	}
+	public static function getGroup(){
+		if (!self::$group)
+		{
+			require_once TILDE_PATH_LIBRARIES.'/group/group.php';
+			self::$group = TildeGroup::getInstance();
+		}
+		return self::$group;
+	}
+	public static function getCategory(){
+		if (!self::$category)
+		{
+			require_once TILDE_PATH_LIBRARIES.'/category/category.php';
+			self::$category = TildeCategory::getInstance();
+		}
+		return self::$category;
+	}
+	public static function getDocument(){
+		if (!self::$document)
+		{
+			require_once TILDE_PATH_LIBRARIES.'/document/document.php';
+			self::$document = TildeDocument::getInstance();
+		}
+		return self::$document;
+	}
+	public static function getUser(){
+		if (!self::$user)
+		{
+			require_once TILDE_PATH_LIBRARIES.'/user/user.php';
+			self::$user = TildeUser::getInstance();
+		}
+		return self::$user;
+	}
+	public static function getForm(){
+		if (!self::$form)
+		{
+			require_once TILDE_PATH_LIBRARIES.'/form/form.php';
+			self::$form = TildeForm::getInstance();
+		}
+		return self::$form;
+	}
 	public static function getDBObject(){
+		if (!self::$database)
+		{
+			require_once TILDE_PATH_LIBRARIES.'/database/database.php';
+			self::$database = DBaseObject::getInstance();
+		}
+		return self::$database;
+	}
+	/*public static function getDBObject(){
 		if (!self::$database)
 		{
 			self::$database = self::createDBObject();
@@ -46,5 +115,5 @@ abstract class TildeFactory{
 	}
 	protected static function createDBObject(){
 		
-	}
+	}*/
 }

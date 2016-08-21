@@ -7,6 +7,8 @@
  * @license     GNU General Public License version 3 or later; see LICENSE
  */
  
+defined('TILDE_TIME') or die; 
+ 
 class TildeCategory{
 	private $className = 'category';
     private static $instance;
@@ -20,11 +22,11 @@ class TildeCategory{
     }
 	private function __construct()
     {
-		$this->settings = new TSettings();
+		$this->settings = TildeFactory::getSettings();
 		$this->html_title = $this->settings->sitename;
     }
 	public function getCategories(){
-		$db = DBaseObject::getInstance();
+		$db = TildeFactory::getDBObject();
 		return $db->getTable('category');
 	}
 	public function getCategory($_id){
@@ -47,7 +49,7 @@ class TildeCategory{
 	}
 	
 	public function create(){
-		$db = DBaseObject::getInstance();
+		$db = TildeFactory::getDBObject();
 		$categoryDetails = new stdClass();
 		if(isset($_POST['id'])){
 			$categoryDetails->id = $_POST['id']; 
@@ -56,7 +58,7 @@ class TildeCategory{
 		$categoryDetails->alias= $_POST['alias']; 
 		$categoryDetails->description= $_POST['description'];
 		$categoryDetails->tags= json_encode(array_values(array_filter($_POST['tags'])));
-		$categoryDetails->creator = TildeUser::getInstance()->getUser()->id;
+		$categoryDetails->creator = TildeFactory::getUser()->getUser()->id;
 		$categoryDetails->state = $_POST['state'];
 		error_log(print_r($categoryDetails,true));
 		return $db->storeRow('category', $categoryDetails);

@@ -38,16 +38,16 @@ class TildeApplicationSite
 		$document = TildeFactory::getDocument();
 		$document->buildDocument();
 		if(isset($_GET['action'])){
-			if($_GET['action']=='logout') TildeSession::getInstance()->resetSession();
+			if($_GET['action']=='logout') TildeFactory::getSession()->resetSession();
 			if(isset($_GET['view'])){
 				switch($_GET['view']){
 					case 'messages':
-						TildeMessage::getInstance()->execute($_GET['action']);
+						TildeFactory::getMessage()->execute($_GET['action']);
 						break;
 					case 'groups':
-						TildeGroup::getInstance()->execute($_GET['action']);
+						TildeFactory::getGroup()->execute($_GET['action']);
 					case 'categories':
-						TildeCategory::getInstance()->execute($_GET['action']);  
+						TildeFactory::getCategory()->execute($_GET['action']);  
 				}
 			}
 			switch($_GET['action']){
@@ -57,6 +57,7 @@ class TildeApplicationSite
 					break;
 			}
 		}
-		$logged_in = TildeUser::getInstance()->isUserLoggedIn();
+		$logged_in = TildeFactory::getUser()->isUserLoggedIn();
+		return $document->displayDocument();
 	}
 }
