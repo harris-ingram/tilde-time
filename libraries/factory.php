@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 3 or later; see LICENSE
  */
    
-define('TILDE_TIME', 1);
+defined('TILDE_TIME') or die;
 
 abstract class TildeFactory{
 	public static $application = null;
