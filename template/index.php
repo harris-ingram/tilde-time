@@ -12,11 +12,15 @@ defined('TILDE_TIME') or die;
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-	<?php $this->getPart('header'); ?>
+	<?php //$this->getPart('header'); ?>
+	<document:include type="header" />
 </head>
 <body>
-	<?php $this->getPart('navigation'); ?>
-	<?php $this->getPart('content'); ?>
-	<?php $this->getPart('footer'); ?>
+	<?php //$this->getPart('navigation'); ?>
+	<?php //$this->getPart('content'); ?>
+	<?php //$this->getPart('footer'); ?>
+	<document:include type="navigation" />
+	<document:include type="content" />
+	<document:include type="footer" />
 </body>
 </html>

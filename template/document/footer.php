@@ -9,4 +9,3 @@
  
 defined('TILDE_TIME') or die;
 
-echo $parts->js;

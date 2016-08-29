@@ -2,30 +2,30 @@ var _date;
 var _format = 'dddd, Do MMMM YYYY';
 
 function dt() {
-	$(function () {
-		$('#date').datetimepicker({
+	jQuery(function () {
+		jQuery('#date').datetimepicker({
 			inline: true,
 			sideBySide: false,
 			defaultDate: _date
 		});
 		
-		$('#date').on("dp.change", function (e) {
-			_date = $('#date').data('DateTimePicker').date();
-			$('#dateval').text(_date.format(_format));
+		jQuery('#date').on("dp.change", function (e) {
+			_date = jQuery('#date').data('DateTimePicker').date();
+			jQuery('#dateval').text(_date.format(_format));
 			performQuery();
-			$('[data-toggle="popover"]').blur();
-			$('[data-toggle="popover"]').popover("hide");
+			jQuery('[data-toggle="popover"]').blur();
+			jQuery('[data-toggle="popover"]').popover("hide");
 		});
 	});
 }
 
 function dateInit() {
 	_date = moment();
-	$('#dateval').text(_date.format(_format));
+	jQuery('#dateval').text(_date.format(_format));
 }
 
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover({
+jQuery(document).ready(function(){
+    jQuery('[data-toggle="popover"]').popover({
 		html: true,
 		content: "<div id=\"date\"></div><script>dt();<\/script>" // Embedded end script element breaks js, remember to split it.
 	});
@@ -124,7 +124,7 @@ function handleClick(event, data) {
 	};
 	xhttp.open("GET", "detailevent.php?event="+data.event_id, true);
 	xhttp.send();
-	$('#eventDetailModal').modal('show');
+	jQuery('#eventDetailModal').modal('show');
 }
 
 function timeCalc(tStart, tEnd) {
@@ -144,8 +144,8 @@ function prepareCanvas() {
 	dateInit();
 
 	// Wait for page load to get the correct dimensions of the canvas element
-	$(window).load(function() {
-		canvas = $('#calendar_drawarea');
+	jQuery(window).load(function() {
+		canvas = jQuery('#calendar_drawarea');
 		// Once loaded, scale the canvas to the css values
 		canvas[0].width = canvas.width();
 		canvas[0].height = canvas.height();
@@ -160,19 +160,19 @@ function prepareCanvas() {
 
 function performQuery() {
 	// Finally, make an ajax call to prep data
-	$.ajax({
+	jQuery.ajax({
 		method: "POST",
-		url: "php/calendarquery.php",
+		url: "ajax.php?calltype=calendarquery",
 		//data: {"date": _date.format("201-05-08")},
 		data: {"date": _date.format("YYYY-MM-DD")},
 		success: function(data) {
 			if(data != null) {
 				reqData = data;
 				divisions = reqData.length;
-				cleanup();
-				draw();
+				//cleanup();
+				//draw();
 			} else {
-				cleanup();
+				//cleanup();
 			}
 		},
 		dataType: "json"
@@ -186,22 +186,24 @@ function cleanup() {
 }
 
 function drawTimeColumn() {
-	document.write("<div class=\"row\" id=\"time_whole\">\
-						<div class=\"col-md-1\" id=\"time_whole_item\">12</div>\
+	var outputAppend = '';
+	outputAppend += "<div class=\"row time_whole\">\
+						<div class=\"col-md-1 time_whole_item\">12</div>\
 					</div>\
-					<div class=\"row\" id=\"time_half\">\
-						<div class=\"col-md-1\" id=\"time_half_item\">12:30</div>\
-					</div>");
+					<div class=\"row time_half\">\
+						<div class=\"col-md-1 time_half_item\">12:30</div>\
+					</div>";
 
 	for (i = 1; i < 24; ++i) {
 		var ev = (i < 13) ? i : i - 12;
-		document.write("<div class=\"row\" id=\"time_whole\">\
-							<div class=\"col-md-1\" id=\"time_whole_item\">" + ev + "</div>\
+		outputAppend += "<div class=\"row time_whole\">\
+							<div class=\"col-md-1\ time_whole_item\">" + ev + "</div>\
 						</div>\
-						<div class=\"row\" id=\"time_half\"");
+						<div class=\"row time_half\"";
 		if(i == 12) {
-			document.write("style=\"border-bottom: 3px double #007cc3;\"");
+			outputAppend += " style=\"border-bottom: 3px double #007cc3;\"";
 		}
-		document.write("><div class=\"col-md-1\" id=\"time_half_item\">" + (ev + 0.3) + "0</div></div>");
+		outputAppend += "><div class=\"col-md-1 time_half_item\">" + (ev + 0.3) + "0</div></div>";
 	}
+	jQuery('#time_container').append(outputAppend);
 }

@@ -25,7 +25,9 @@ $calendar = TildeFactory::getCalendar();
 				<div class="col-md-12" id="time_container">
 					<canvas id="calendar_drawarea"></canvas>
 					<script>
-						prepareCanvas();
+						jQuery(function(){
+							prepareCanvas();
+						});
 					</script>
 				</div>
 			</div>

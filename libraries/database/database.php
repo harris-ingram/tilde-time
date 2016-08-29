@@ -49,6 +49,19 @@ class DBaseObject
 		}
 		return $this->tables[$_tableName];
 	}
+	public function getResults($_tableName, $_select = '*', $_conditions = '1',$_order=''){
+		
+			$result = $this->db_connection->query('SELECT '.$_select.' FROM '.$this->db_connection->escape_string($_tableName).' WHERE '.$_conditions.(($_order)?' ORDER BY '.$this->db_connection->escape_string($_order):''));
+			$return = array();
+			while ($obj = $result->fetch_object()) {
+				if(property_exists($obj, 'id')){
+					$return[$obj->id] = $obj;
+				}else{
+					$return[] = $obj;
+				}
+			}
+		return $return;
+	}
 	public function getRowById($_tableName, $id){
 		$full = $this->getTable($_tableName);
 		if(isset($full[$id]))return $full[$id];

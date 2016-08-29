@@ -19,5 +19,4 @@ require_once TILDE_PATH_BASE . '/includes/defines.php';
 require_once TILDE_PATH_LIBRARIES . '/factory.php';
 
 $application = TildeFactory::getApplication('site');
-
-echo $application->execute();
+$ajax = TildeFactory::getAjax();

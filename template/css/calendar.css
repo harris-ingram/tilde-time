@@ -46,19 +46,19 @@
 	border-left: 1px dashed #007cc3
 }
 
-#time_whole_item, #time_half_item {
+.time_whole_item, .time_half_item {
 	padding: 0;
 	width: 7%;
 }
 
-#time_half {
+.time_half {
 	font-size: 10px;
 	padding-top: 5px;
 	border-top: 1px dotted #007cc3;
 	border-bottom: 1px solid #007cc3;
 }
 
-#time_whole, #time_half {
+.time_whole, .time_half {
 	height: 28.5px;
 	text-align: center;
 }

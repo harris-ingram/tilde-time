@@ -9,3 +9,33 @@
 [21-Aug-2016 17:48:32 UTC] PHP   7. TildeDocument->includeFile() /var/www/html/git/hi/libraries/document/document.php:140
 [21-Aug-2016 17:48:32 UTC] PHP   8. include() /var/www/html/git/hi/libraries/document/document.php:151
 [21-Aug-2016 17:48:32 UTC] PHP   9. require() /var/www/html/git/hi/template/document/content.php:22
+[28-Aug-2016 12:22:53 UTC] PHP Notice:  Undefined property: stdClass::$js in /var/www/html/git/hi/template/document/footer.php on line 12
+[28-Aug-2016 12:22:53 UTC] PHP Stack trace:
+[28-Aug-2016 12:22:53 UTC] PHP   1. {main}() /var/www/html/git/hi/index.php:0
+[28-Aug-2016 12:22:53 UTC] PHP   2. TildeApplicationSite->execute() /var/www/html/git/hi/index.php:23
+[28-Aug-2016 12:22:53 UTC] PHP   3. TildeDocument->displayDocument() /var/www/html/git/hi/libraries/application/site.php:61
+[28-Aug-2016 12:22:53 UTC] PHP   4. require_once() /var/www/html/git/hi/libraries/document/document.php:214
+[28-Aug-2016 12:22:53 UTC] PHP   5. TildeDocument->getPart() /var/www/html/git/hi/template/index.php:20
+[28-Aug-2016 12:22:53 UTC] PHP   6. TildeDocument->getFooter() /var/www/html/git/hi/libraries/document/document.php:209
+[28-Aug-2016 12:22:53 UTC] PHP   7. TildeDocument->includeFile() /var/www/html/git/hi/libraries/document/document.php:136
+[28-Aug-2016 12:22:53 UTC] PHP   8. include() /var/www/html/git/hi/libraries/document/document.php:151
+[28-Aug-2016 12:23:04 UTC] PHP Notice:  Undefined property: stdClass::$js in /var/www/html/git/hi/template/document/footer.php on line 12
+[28-Aug-2016 12:23:04 UTC] PHP Stack trace:
+[28-Aug-2016 12:23:04 UTC] PHP   1. {main}() /var/www/html/git/hi/index.php:0
+[28-Aug-2016 12:23:04 UTC] PHP   2. TildeApplicationSite->execute() /var/www/html/git/hi/index.php:23
+[28-Aug-2016 12:23:04 UTC] PHP   3. TildeDocument->displayDocument() /var/www/html/git/hi/libraries/application/site.php:61
+[28-Aug-2016 12:23:04 UTC] PHP   4. require_once() /var/www/html/git/hi/libraries/document/document.php:214
+[28-Aug-2016 12:23:04 UTC] PHP   5. TildeDocument->getPart() /var/www/html/git/hi/template/index.php:20
+[28-Aug-2016 12:23:04 UTC] PHP   6. TildeDocument->getFooter() /var/www/html/git/hi/libraries/document/document.php:209
+[28-Aug-2016 12:23:04 UTC] PHP   7. TildeDocument->includeFile() /var/www/html/git/hi/libraries/document/document.php:136
+[28-Aug-2016 12:23:04 UTC] PHP   8. include() /var/www/html/git/hi/libraries/document/document.php:151
+[28-Aug-2016 12:24:39 UTC] PHP Notice:  Undefined property: stdClass::$js in /var/www/html/git/hi/template/document/footer.php on line 12
+[28-Aug-2016 12:24:39 UTC] PHP Stack trace:
+[28-Aug-2016 12:24:39 UTC] PHP   1. {main}() /var/www/html/git/hi/index.php:0
+[28-Aug-2016 12:24:39 UTC] PHP   2. TildeApplicationSite->execute() /var/www/html/git/hi/index.php:23
+[28-Aug-2016 12:24:39 UTC] PHP   3. TildeDocument->displayDocument() /var/www/html/git/hi/libraries/application/site.php:61
+[28-Aug-2016 12:24:39 UTC] PHP   4. require_once() /var/www/html/git/hi/libraries/document/document.php:214
+[28-Aug-2016 12:24:39 UTC] PHP   5. TildeDocument->getPart() /var/www/html/git/hi/template/index.php:20
+[28-Aug-2016 12:24:39 UTC] PHP   6. TildeDocument->getFooter() /var/www/html/git/hi/libraries/document/document.php:209
+[28-Aug-2016 12:24:39 UTC] PHP   7. TildeDocument->includeFile() /var/www/html/git/hi/libraries/document/document.php:136
+[28-Aug-2016 12:24:39 UTC] PHP   8. include() /var/www/html/git/hi/libraries/document/document.php:151

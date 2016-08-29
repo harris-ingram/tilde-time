@@ -22,6 +22,7 @@ abstract class TildeFactory{
 	public static $form = null;
 	public static $calendar = null;
 	public static $mailer = null;
+	public static $ajax = null;
 	
 	public static function getApplication($id = null){
 		if (!self::$application)
@@ -114,6 +115,14 @@ abstract class TildeFactory{
 			self::$database = DBaseObject::getInstance();
 		}
 		return self::$database;
+	}
+	public static function getAjax(){
+		if (!self::$ajax)
+		{
+			require_once TILDE_PATH_LIBRARIES.'/ajax/ajax.php';
+			self::$ajax = TildeAjax::getInstance();
+		}
+		return self::$ajax;
 	}
 	/*public static function getDBObject(){
 		if (!self::$database)

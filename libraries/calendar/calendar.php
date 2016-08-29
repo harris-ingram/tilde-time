@@ -41,10 +41,16 @@ class TildeCalendar{
 	}
 	protected function getCSS(){
 		$this->document->setCSSFiles($this->settings->template_path.'bootstrap/css/bootstrap.css');
-		$this->document->setCSSFiles($this->settings->template_path.'bootstrap/css/bootstrap-datetimepicker.min.css.css');
+		$this->document->setCSSFiles($this->settings->template_path.'bootstrap/css/bootstrap-datetimepicker.min.css');
 		$this->document->setCSSFiles($this->settings->template_path.'css/calendar.css');		
 	}
 	public function getCalendarModal(){
 		echo require_once TILDE_PATH_LIBRARIES.'/calendar/modal.php';
+	}
+	public static function getEventListByDate($dateIn){
+		$db = TildeFactory::getDBObject();
+		$dateFilter = date("Y-m-d", strtotime($dateIn));
+		$results = $db->getResults('event', '*', '`date_time_start` BETWEEN "'.$dateFilter.' 00:00:00" AND "'.$dateFilter.' 23:59:59"','date_time_start');
+		return $results;
 	}
 }

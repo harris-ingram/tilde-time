@@ -16,6 +16,9 @@ class TildeDocument
 	private $tables;
 	private $html_title;
 	private $settings;
+	private $_parts;
+	private $_template;
+	private $_template_tags;
 
     public static function getInstance()
     {
@@ -31,6 +34,7 @@ class TildeDocument
     {
 		$this->settings = TildeFactory::getSettings();
 		$this->html_title = $this->settings->sitename;
+		$this->_parts = array();
     }
 
     private function __clone()
@@ -109,7 +113,7 @@ class TildeDocument
 		return "\r\n".'<script>'.$content.'</script>';
 		
 	}
-	public function getJSFoot(){
+	public function getJS(){
 		$output = '';
 		if(count($this->jsFiles)){
 			foreach($this->jsFiles as $src){
@@ -127,21 +131,25 @@ class TildeDocument
 	private $fontFiles = array();
 	public function getHeader(){
 		$parts = new stdClass();
+		$parts->js = $this->getJS();
 		$parts->css = $this->getCSS();
-		echo $this->includeFile('header',$parts);
+		$this->_parts['header'] = $this->includeFile('header',$parts);
+		return $this;
 	}
 	public function getFooter(){
 		$parts = new stdClass();
-		$parts->js = $this->getJSFoot();
-		echo $this->includeFile('footer',$parts);
+		$this->_parts['footer'] = $this->includeFile('footer',$parts);
+		return $this;
 		
 	}
 	public function getContent(){
-		echo $this->includeFile('content');
+		$this->_parts['content'] = $this->includeFile('content');
+		return $this;
 		
 	}
 	public function getNavigation(){
-		echo $this->includeFile('navigation');
+		$this->_parts['navigation'] = $this->includeFile('navigation');
+		return $this;
 		
 	}
 	private function includeFile($fileName,$parts=null){
@@ -211,6 +219,43 @@ class TildeDocument
 		return '';
 	}
 	public function displayDocument(){
-		return require_once TILDE_PATH_TEMPLATE.'/index.php';
+		ob_start();
+			require_once TILDE_PATH_TEMPLATE.'/index.php';
+		$this->_template = ob_get_clean();
+		$this->_parseTemplate();
+		//print_r($this->_template_tags);
+		return $this->_renderTemplate();
+	}
+	protected function _renderTemplate(){
+		$replace = array();
+		$with = array();
+		foreach($this->_template_tags as $docPart => $type){
+			$this->getPart($type);
+			
+			$replace[] = $docPart;
+			$with[] = $this->_parts[$type];
+		}
+		return str_replace($replace, $with, $this->_template);
+	}
+	protected function _parseTemplate()
+	{
+		$matches = array();
+
+		if (preg_match_all('#<document:include\ type="([^"]+)"(.*)\/>#iU', $this->_template, $matches))
+		{
+			$this->_template_tags = array();
+
+			// Step through the jdocs in reverse order.
+			for ($i = count($matches[0]) - 1; $i >= 0; $i--)
+			{
+				$type = $matches[1][$i];
+
+				$this->_template_tags[$matches[0][$i]] = $type;
+				
+			}
+
+		}
+
+		return $this;
 	}
 }
